@@ -24,6 +24,9 @@ dist
 # turbo
 .turbo
 
+# expo
+.expo/
+
 # misc
 .DS_Store
 *.pem

@@ -1,0 +1,39 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "dev": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workspace/ui": "workspace:*",
+    "expo": "~57.0.26",
+    "expo-status-bar": "~57.0.1",
+    "expo-system-ui": "~57.0.4",
+    "nativewind": "5.0.0-rc.0",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-css": "3.1.0-rc.0",
+    "react-native-reanimated": "4.5.1",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-worklets": "0.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.12",
+    "@types/react": "~19.2.2",
+    "@workspace/eslint-config": "workspace:*",
+    "eslint": "^10",
+    "globals": "^17",
+    "postcss": "^8",
+    "tailwindcss": "4.1.12",
+    "typescript": "~6.0.3"
+  },
+  "private": true
+}

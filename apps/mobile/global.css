@@ -1,0 +1,15 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+/* Shared design tokens (identical to the web app). */
+@import "../../packages/ui/src/styles/tokens.css";
+
+/*
+ * Tailwind must scan every file that contains class names, including the
+ * shared UI package in this monorepo.
+ */
+@source "./**/*.{ts,tsx}";
+@source "../../packages/ui/src/**/*.{ts,tsx}";
