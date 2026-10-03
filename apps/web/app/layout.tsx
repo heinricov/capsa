@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Oxanium } from "next/font/google"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@workspace/ui/utils";
 
 const oxanium = Oxanium({subsets:['latin'],variable:'--font-sans'})
 

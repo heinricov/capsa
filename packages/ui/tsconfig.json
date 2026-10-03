@@ -5,7 +5,11 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "paths": {
-      "@workspace/ui/*": ["./src/*"]
+      "@workspace/ui/*": ["./src/*"],
+      "@workspace/ui/variants/*": ["./src/shared/variants/*"],
+      "@workspace/ui/types/*": ["./src/shared/types/*"],
+      "@workspace/ui/utils": ["./src/shared/utils/utils.ts"],
+      "@workspace/ui/utils/*": ["./src/shared/utils/*"]
     }
   },
   "include": ["."],

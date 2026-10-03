@@ -1,8 +1,8 @@
 import { cva } from "class-variance-authority"
 
 /**
- * Variant definitions shared by the web (`components/button`) and native
- * (`native/components/button`) implementations. Keep this file free of any
+ * Variant definitions shared by the web (`web/button`) and native
+ * (`native/button`) implementations. Keep this file free of any
  * platform-specific imports (`@base-ui/react`, `react-native`, ...) so it can
  * be bundled by both Next.js and Metro.
  */
@@ -41,7 +41,4 @@ const buttonVariants = cva(
   }
 )
 
-type ButtonVariants = Parameters<typeof buttonVariants>[0]
-
 export { buttonVariants }
-export type { ButtonVariants }

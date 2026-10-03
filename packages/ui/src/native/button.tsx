@@ -4,7 +4,7 @@ import { type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 import type { ReactNode } from "react"
 import { Pressable, Text, type PressableProps } from "react-native"
-import { buttonVariants } from "../../lib/button-variants"
+import { buttonVariants } from "../shared/variants/button-variants"
 
 type ButtonProps = PressableProps &
   VariantProps<typeof buttonVariants> & {

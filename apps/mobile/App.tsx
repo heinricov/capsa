@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/native/components/button"
+import { Button } from "@workspace/ui/native/button"
 import { StatusBar } from "expo-status-bar"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import { StyleSheet, Text, View } from "react-native"
