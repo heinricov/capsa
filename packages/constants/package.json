@@ -1,5 +1,5 @@
 {
-  "name": "@workspace/types",
+  "name": "@workspace/constants",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -10,17 +10,17 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./role": {
+      "types": "./src/role.ts",
+      "default": "./src/role.ts"
+    },
     "./account": {
       "types": "./src/account.ts",
       "default": "./src/account.ts"
     },
-    "./common": {
-      "types": "./src/common.ts",
-      "default": "./src/common.ts"
-    },
-    "./api": {
-      "types": "./src/api.ts",
-      "default": "./src/api.ts"
+    "./app": {
+      "types": "./src/app.ts",
+      "default": "./src/app.ts"
     },
     "./package.json": "./package.json"
   },
@@ -28,9 +28,6 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,md,json}\"",
     "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@workspace/constants": "workspace:*"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",

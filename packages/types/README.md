@@ -25,15 +25,17 @@ Sebelum bisa di-import, tambahkan dependency dulu di package/app pemakai:
 
 | File             | Type                                                     |
 | ---------------- | -------------------------------------------------------- |
-| `src/account.ts` | `Role`, `Account` (termasuk `password`), `PublicAccount` |
+| `src/account.ts` | `Role` (dari `@workspace/constants`), `Account` (termasuk `password`), `PublicAccount` |
 | `src/common.ts`  | `ApiResponse<T>`, `PaginatedResponse<T>`                 |
 | `src/api.ts`     | `LoginRequest`, `RegisterRequest`, `LoginResponse`       |
 
 ## Catatan
 
-- **Selaras dengan Prisma:** union `Role` (`"USER" | "ADMIN"`) struktural sama
-  dengan enum `Role` hasil generate `@workspace/db`, sehingga nilai dari query
-  Prisma bisa langsung dipakai di type ini tanpa konversi.
+- **`Role` didefinisikan di `@workspace/constants`** (`ROLES`) — package ini
+  hanya menyalurkannya kembali agar konsumen cukup import dari satu tempat.
+- **Selaras dengan Prisma:** `Role` struktural sama dengan enum `Role` hasil
+  generate `@workspace/db`, sehingga nilai dari query Prisma bisa langsung
+  dipakai di type ini tanpa konversi.
 - **Alur perubahan:** ubah kontrak API → ubah package ini; ubah struktur tabel
   → ubah `packages/db/prisma/schema.prisma` lalu sinkronkan type di sini.
 - Selalu import sebagai type (`import type { ... }`) karena package ini tidak

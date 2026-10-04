@@ -3,8 +3,9 @@
  * Selaras dengan model `Account` di `packages/db` (Prisma).
  */
 
-/** Role account. Nilainya sama dengan enum `Role` di @workspace/db. */
-export type Role = "USER" | "ADMIN"
+import type { Role } from "@workspace/constants"
+
+export type { Role }
 
 /** Account lengkap — hanya untuk keperluan server/internal. */
 export interface Account {
