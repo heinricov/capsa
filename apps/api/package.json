@@ -23,6 +23,7 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@workspace/db": "workspace:*",
     "@workspace/env": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",

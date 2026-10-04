@@ -20,3 +20,5 @@ allowBuilds:
   msw: false
   '@parcel/watcher': true
   '@tailwindcss/oxide': true
+  prisma: true
+  '@prisma/engines': true

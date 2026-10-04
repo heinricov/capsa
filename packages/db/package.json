@@ -1,0 +1,44 @@
+{
+  "name": "@workspace/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.5"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/node": "^20",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^10",
+    "prisma": "^7.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}
