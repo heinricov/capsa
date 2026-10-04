@@ -13,23 +13,29 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "NODE_OPTIONS=--experimental-vm-modules jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^12.0.2",
     "@nestjs/platform-express": "^11.0.1",
     "@workspace/db": "workspace:*",
-    "@workspace/env": "workspace:*",
+    "@workspace/errors": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
+    "@workspace/logger": "workspace:*",
+    "@workspace/types": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "@workspace/validators": "workspace:*",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^18.0.5",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
@@ -59,12 +65,28 @@
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.(t|j)s$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "module": "commonjs",
+            "moduleResolution": "node10",
+            "rewriteRelativeImportExtensions": false
+          }
+        }
+      ]
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@workspace)",
+      "\\.pnp\\.[^\\\\]+$"
+    ],
+    "moduleNameMapper": {
+      "^@workspace/db$": "<rootDir>/../test/mocks/workspace-db.ts"
+    }
   }
 }
