@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@workspace/env": "workspace:*",
     "@workspace/ui": "workspace:*",
     "expo": "~57.0.26",
     "expo-status-bar": "~57.0.1",

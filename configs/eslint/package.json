@@ -6,7 +6,8 @@
   "exports": {
     "./base": "./base.js",
     "./next-js": "./next.js",
-    "./react-internal": "./react-internal.js"
+    "./react-internal": "./react-internal.js",
+    "./nestjs": "./nestjs.js"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
@@ -17,8 +18,11 @@
     "eslint": "^10",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
+    "eslint-plugin-prettier": "^5.2.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-turbo": "^2.11.5",
-    "globals": "^17.12.0"
+    "globals": "^17.12.0",
+    "prettier": "^3",
+    "typescript-eslint": "^8.20.0"
   }
 }

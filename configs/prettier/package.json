@@ -1,0 +1,16 @@
+{
+  "name": "@workspace/prettier-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "prettier-plugin-tailwindcss": "^0.8.1"
+  },
+  "peerDependencies": {
+    "prettier": "^3"
+  }
+}

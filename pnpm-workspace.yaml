@@ -1,5 +1,6 @@
 packages:
   - "apps/*"
+  - "configs/*"
   - "packages/*"
 
 # NativeWind v5 RC hanya diuji dengan lightningcss ini. Versi lain
