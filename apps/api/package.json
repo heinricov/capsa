@@ -27,6 +27,7 @@
     "@workspace/env": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "dotenv": "^18.0.5",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

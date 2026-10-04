@@ -53,6 +53,9 @@ importers:
       '@workspace/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript
+      dotenv:
+        specifier: ^18.0.5
+        version: 18.0.5
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
