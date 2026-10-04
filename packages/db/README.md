@@ -4,11 +4,15 @@ Prisma 7 (PostgreSQL) — paket database bersama untuk seluruh workspace.
 
 ## Setup
 
-1. Salin `DATABASE_URL` ke `.env` di root repo (file `.env` sudah di-gitignore):
+1. Pastikan `.env` root sudah ada (bawaannya sudah dibuat; bila belum:
+   `cp .env.example .env`). Isi minimal:
 
    ```bash
    DATABASE_URL="postgresql://postgres@localhost:5432/capsa"
    ```
+
+   `packages/db/.env` adalah symlink ke file root tersebut — Prisma
+   membacanya otomatis, tidak perlu `DATABASE_URL` di shell.
 
 2. Sinkronkan schema & isi seed:
 
@@ -24,15 +28,15 @@ Prisma 7 (PostgreSQL) — paket database bersama untuk seluruh workspace.
 | `pnpm --filter @workspace/db db:generate` | Regenerasi client ke `src/generated/prisma/` — **jalankan setiap kali mengubah `prisma/schema.prisma`**, hasilnya di-commit |
 | `pnpm --filter @workspace/db db:push`     | Sinkronkan schema ke database (tanpa file migration)                                                                        |
 | `pnpm --filter @workspace/db db:migrate`  | Buat migration dev (mengisi `prisma/migrations/`)                                                                           |
-| `pnpm --filter @workspace/db db:seed` | Isi akun seed (lihat di bawah) |
+| `pnpm --filter @workspace/db db:seed`     | Isi akun seed (lihat di bawah)                                                                                              |
 | `pnpm --filter @workspace/db db:studio`   | Prisma Studio (GUI)                                                                                                         |
 
 ## Akun seed
 
-| Email | Password | Role |
-| --- | --- | --- |
+| Email             | Password    | Role  |
+| ----------------- | ----------- | ----- |
 | `admin@capsa.com` | `admin1234` | ADMIN |
-| `user@capsa.com` | `user1234` | USER |
+| `user@capsa.com`  | `user1234`  | USER  |
 
 ## Pakai di app lain
 
