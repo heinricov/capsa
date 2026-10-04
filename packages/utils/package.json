@@ -1,0 +1,42 @@
+{
+  "name": "@workspace/utils",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./string": {
+      "types": "./src/string.ts",
+      "default": "./src/string.ts"
+    },
+    "./date": {
+      "types": "./src/date.ts",
+      "default": "./src/date.ts"
+    },
+    "./object": {
+      "types": "./src/object.ts",
+      "default": "./src/object.ts"
+    },
+    "./sleep": {
+      "types": "./src/sleep.ts",
+      "default": "./src/sleep.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^10",
+    "typescript": "^5"
+  }
+}
