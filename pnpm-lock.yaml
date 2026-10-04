@@ -385,6 +385,21 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/errors:
+    devDependencies:
+      '@workspace/eslint-config':
+        specifier: workspace:*
+        version: link:../../configs/eslint
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      eslint:
+        specifier: ^10
+        version: 10.11.0(jiti@2.7.0)(supports-color@8.1.1)
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   packages/types:
     dependencies:
       '@workspace/constants':
