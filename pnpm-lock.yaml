@@ -425,6 +425,28 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/hooks:
+    dependencies:
+      react:
+        specifier: 19.2.3
+        version: 19.2.3
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.15
+      '@workspace/eslint-config':
+        specifier: workspace:*
+        version: link:../../configs/eslint
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      eslint:
+        specifier: ^10
+        version: 10.11.0(jiti@2.7.0)(supports-color@8.1.1)
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   packages/logger:
     dependencies:
       pino:
