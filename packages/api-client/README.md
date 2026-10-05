@@ -67,8 +67,12 @@ import { UnauthorizedError } from "@workspace/errors"
 try {
   await api.accounts.login(creds)
 } catch (error) {
-  if (error instanceof UnauthorizedError) { /* 401 */ }
-  if (error instanceof ApiNetworkError) { /* offline / CORS */ }
+  if (error instanceof UnauthorizedError) {
+    /* 401 */
+  }
+  if (error instanceof ApiNetworkError) {
+    /* offline / CORS */
+  }
 }
 ```
 

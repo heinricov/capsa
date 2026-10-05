@@ -23,11 +23,11 @@ Sebelum bisa di-import, tambahkan dependency dulu di package/app pemakai:
 
 ## Isi
 
-| File             | Type                                                     |
-| ---------------- | -------------------------------------------------------- |
+| File             | Type                                                                                   |
+| ---------------- | -------------------------------------------------------------------------------------- |
 | `src/account.ts` | `Role` (dari `@workspace/constants`), `Account` (termasuk `password`), `PublicAccount` |
-| `src/common.ts`  | `ApiResponse<T>`, `PaginatedResponse<T>`                 |
-| `src/api.ts`     | `LoginRequest`, `RegisterRequest`, `LoginResponse`       |
+| `src/common.ts`  | `ApiResponse<T>`, `PaginatedResponse<T>`                                               |
+| `src/api.ts`     | `LoginRequest`, `RegisterRequest`, `LoginResponse`                                     |
 
 ## Catatan
 
