@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tanstack/react-table": "^9.2.6",
     "@workspace/env": "workspace:*",
     "@workspace/ui": "workspace:*",
     "cn": "^0.4.0",
@@ -20,7 +21,8 @@
     "next-themes": "^0.4.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-icons": "^5.7.0"
+    "react-icons": "^5.7.0",
+    "tanstack": "^2.0.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.1.12",
