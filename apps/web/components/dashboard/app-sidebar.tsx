@@ -12,12 +12,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@workspace/ui/web/sidebar"
-import {
-  TerminalSquareIcon,
-  BotIcon,
-  BookOpenIcon,
-  Settings2Icon,
-} from "lucide-react"
+import { LuMonitorCheck } from "react-icons/lu"
+import { GrDatabase } from "react-icons/gr"
 
 // This is sample data.
 const data = {
@@ -30,70 +26,19 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: <TerminalSquareIcon />,
+      icon: <LuMonitorCheck />,
     },
     {
-      title: "Models",
-      url: "#",
-      icon: <BotIcon />,
+      title: "Data",
+      icon: <GrDatabase />,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Accounts",
+          url: "/dashboard/data/account",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: <BookOpenIcon />,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: <Settings2Icon />,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: "Box",
+          url: "/dashboard/data/box",
         },
       ],
     },

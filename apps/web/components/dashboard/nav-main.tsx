@@ -24,7 +24,7 @@ export function NavMain({
   label?: string
   items: {
     title: string
-    url: string
+    url?: string
     icon?: React.ReactNode
     isActive?: boolean
     items?: {
