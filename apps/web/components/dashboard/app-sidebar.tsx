@@ -3,9 +3,8 @@
 import * as React from "react"
 
 import { NavMain } from "@/components/dashboard/nav-main"
-import { NavProjects } from "@/components/dashboard/nav-projects"
 import { NavUser } from "@/components/dashboard/nav-user"
-import { TeamSwitcher } from "@/components/dashboard/team-switcher"
+import { AppLogo } from "@/components/dashboard/app-logo"
 import {
   Sidebar,
   SidebarContent,
@@ -14,16 +13,10 @@ import {
   SidebarRail,
 } from "@workspace/ui/web/sidebar"
 import {
-  GalleryVerticalEndIcon,
-  AudioLinesIcon,
-  TerminalIcon,
   TerminalSquareIcon,
   BotIcon,
   BookOpenIcon,
   Settings2Icon,
-  FrameIcon,
-  PieChartIcon,
-  MapIcon,
 } from "lucide-react"
 
 // This is sample data.
@@ -33,43 +26,11 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
+  menus: [
     {
-      name: "Acme Inc",
-      logo: <GalleryVerticalEndIcon />,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: <AudioLinesIcon />,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: <TerminalIcon />,
-      plan: "Free",
-    },
-  ],
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
+      title: "Dashboard",
+      url: "/dashboard",
       icon: <TerminalSquareIcon />,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
       title: "Models",
@@ -137,34 +98,16 @@ const data = {
       ],
     },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: <FrameIcon />,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: <PieChartIcon />,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: <MapIcon />,
-    },
-  ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <AppLogo />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain label="Menus" items={data.menus} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
