@@ -54,6 +54,35 @@ function wrap(instance: PinoLogger): Logger {
   }
 }
 
+/**
+ * Pilih mode output:
+ * - `LOG_FORMAT=pretty` → pino-pretty (dev-facing, warna + jam ringkas)
+ * - `LOG_FORMAT=json`   → JSON selalu (override manual)
+ * - default: pretty kecuali production (`NODE_ENV=production`) atau test
+ *   (`JEST_WORKER_ID` — hindari spawn worker thread di jest).
+ *
+ * Heuristic NODE_ENV, bukan `isTTY`: `turbo dev` men-pipe stdout sehingga
+ * isTTY=false walau terminal — pretty tetap aktif di development.
+ */
+function prettyTransport():
+  { target: string; options: Record<string, unknown> } | undefined {
+  const format = process.env.LOG_FORMAT
+  const enabled =
+    format === "pretty" ||
+    (format !== "json" &&
+      process.env.NODE_ENV !== "production" &&
+      !process.env.JEST_WORKER_ID)
+  if (!enabled) return undefined
+  return {
+    target: "pino-pretty",
+    options: {
+      colorize: true,
+      translateTime: "SYS:HH:MM:ss.l",
+      ignore: "pid,hostname",
+    },
+  }
+}
+
 export function createLogger(options: LoggerOptions = {}): Logger {
   // globalThis-cast agar aman tanpa lib DOM (tsconfig Node) maupun dengan lib DOM.
   if (typeof (globalThis as { window?: unknown }).window !== "undefined") {
@@ -64,6 +93,7 @@ export function createLogger(options: LoggerOptions = {}): Logger {
     {
       level: options.level ?? readDefaultLevel(),
       timestamp: pino.stdTimeFunctions.isoTime,
+      transport: options.destination ? undefined : prettyTransport(),
     },
     options.destination
   )
