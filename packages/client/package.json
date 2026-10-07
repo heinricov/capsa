@@ -18,6 +18,10 @@
       "types": "./src/auth/index.ts",
       "default": "./src/auth/index.ts"
     },
+    "./box": {
+      "types": "./src/box/index.ts",
+      "default": "./src/box/index.ts"
+    },
     "./common": {
       "types": "./src/common/index.ts",
       "default": "./src/common/index.ts"

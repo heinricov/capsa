@@ -1,10 +1,10 @@
 import React from "react"
-import { BoxTable } from "@/components/pages/box/table"
+import { BoxForm } from "@/components/pages/box/box-form"
 
 export default function page() {
   return (
     <>
-      <BoxTable />
+      <BoxForm mode="create" />
     </>
   )
 }

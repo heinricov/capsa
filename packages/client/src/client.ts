@@ -10,6 +10,7 @@ import {
 import type { ApiResponse } from "./common/types.ts"
 import { type AccountApi, createAccountApi } from "./account/api/index.ts"
 import { type AuthApi, createAuthApi } from "./auth/api/index.ts"
+import { type BoxApi, createBoxApi } from "./box/api/index.ts"
 import type {
   ApiClientOptions,
   ApiErrorBody,
@@ -104,6 +105,7 @@ export interface ApiClient {
   getToken(): string | null
   readonly account: AccountApi
   readonly auth: AuthApi
+  readonly box: BoxApi
 }
 
 export function createApiClient(options: ApiClientOptions = {}): ApiClient {
@@ -172,6 +174,7 @@ export function createApiClient(options: ApiClientOptions = {}): ApiClient {
     request,
     account: createAccountApi(requester),
     auth: createAuthApi(requester),
+    box: createBoxApi(requester),
     setToken,
     clearToken: requester.clearToken,
     getToken: () => token,

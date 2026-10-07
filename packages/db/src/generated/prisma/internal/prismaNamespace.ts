@@ -397,7 +397,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Account: 'Account'
+  Account: 'Account',
+  Box: 'Box'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "account"
+    modelProps: "account" | "box"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -491,6 +492,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Box: {
+      payload: Prisma.$BoxPayload<ExtArgs>
+      fields: Prisma.BoxFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BoxFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BoxFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        findFirst: {
+          args: Prisma.BoxFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BoxFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        findMany: {
+          args: Prisma.BoxFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>[]
+        }
+        create: {
+          args: Prisma.BoxCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        createMany: {
+          args: Prisma.BoxCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BoxCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>[]
+        }
+        delete: {
+          args: Prisma.BoxDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        update: {
+          args: Prisma.BoxUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        deleteMany: {
+          args: Prisma.BoxDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BoxUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BoxUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>[]
+        }
+        upsert: {
+          args: Prisma.BoxUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BoxPayload>
+        }
+        aggregate: {
+          args: Prisma.BoxAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBox>
+        }
+        groupBy: {
+          args: Prisma.BoxGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BoxGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BoxCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BoxCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -542,6 +617,18 @@ export const AccountScalarFieldEnum = {
 } as const
 
 export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
+
+
+export const BoxScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  no: 'no',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BoxScalarFieldEnum = (typeof BoxScalarFieldEnum)[keyof typeof BoxScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -781,6 +868,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
+  box?: Prisma.BoxOmit
 }
 
 /* Types for Logging */

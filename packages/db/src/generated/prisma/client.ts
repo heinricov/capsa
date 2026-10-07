@@ -46,3 +46,8 @@ export { Prisma }
  * 
  */
 export type Account = Prisma.AccountModel
+/**
+ * Model Box
+ * 
+ */
+export type Box = Prisma.BoxModel
