@@ -56,6 +56,8 @@ export function AccountTable() {
       data={rows}
       filterColumnId="email"
       searchPlaceholder="Filter emails..."
+      ToolbarActionLabel="New Account"
+      ToolbarActionUrl="/dashboard/data/account/add"
     />
   )
 }

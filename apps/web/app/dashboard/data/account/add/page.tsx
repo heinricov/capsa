@@ -1,10 +1,10 @@
 import React from "react"
-import { AccountTable } from "@/components/pages/account/table"
+import { AccountForm } from "@/components/pages/account/account-form"
 
 export default function page() {
   return (
     <>
-      <AccountTable />
+      <AccountForm />
     </>
   )
 }

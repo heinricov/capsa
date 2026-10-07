@@ -10,16 +10,22 @@ import {
 } from "@workspace/ui/web/select"
 
 export function FieldSelect({
+  id,
+  label,
+  placeholder,
   ItemsSelect,
 }: {
+  id: string
+  label?: string
+  placeholder?: string
   ItemsSelect: { value: string; label: string }[]
 }) {
   return (
     <Field>
-      <FieldLabel htmlFor="checkout-7j9-exp-year-f59">Year</FieldLabel>
+      <FieldLabel htmlFor="checkout-7j9-exp-year-f59">{label}</FieldLabel>
       <Select>
-        <SelectTrigger id="checkout-7j9-exp-year-f59">
-          <SelectValue />
+        <SelectTrigger id={id}>
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

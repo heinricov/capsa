@@ -15,18 +15,24 @@ import {
 } from "@workspace/ui/web/dropdown-menu"
 import { Input } from "@workspace/ui/web/input"
 import type { DataTableInstance } from "@/components/table/table-features"
+import { useRouter } from "next/navigation"
 
 interface DataTableToolbarProps<TData extends RowData> {
   table: DataTableInstance<TData>
   filterColumnId?: string
   searchPlaceholder: string
+  ToolbarActionLabel?: string
+  ToolbarActionUrl?: string
 }
 
 export function DataTableToolbar<TData extends RowData>({
   table,
   filterColumnId,
   searchPlaceholder,
+  ToolbarActionLabel,
+  ToolbarActionUrl,
 }: DataTableToolbarProps<TData>) {
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = React.useState("")
   const filterColumn = filterColumnId
     ? table.getColumn(filterColumnId)
@@ -94,6 +100,12 @@ export function DataTableToolbar<TData extends RowData>({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <Button
+        disabled={!ToolbarActionUrl}
+        onClick={() => ToolbarActionUrl && router.push(ToolbarActionUrl)}
+      >
+        {ToolbarActionLabel}
+      </Button>
     </div>
   )
 }

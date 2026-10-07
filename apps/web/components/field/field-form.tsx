@@ -1,3 +1,4 @@
+"use client"
 import React from "react"
 import {
   Field,
@@ -7,22 +8,32 @@ import {
   FieldSet,
 } from "@workspace/ui/web/field"
 import { Button } from "@workspace/ui/web/button"
+import { useRouter } from "next/navigation"
 
-export function FieldForm({ children }: { children: React.ReactNode }) {
+export function FieldForm({
+  label,
+  description,
+  children,
+  UrlCancel,
+}: {
+  label?: string
+  description?: string
+  children: React.ReactNode
+  UrlCancel?: string
+}) {
+  const router = useRouter()
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full">
       <form>
         <FieldGroup>
           <FieldSet>
-            <FieldLegend>Payment Method</FieldLegend>
-            <FieldDescription>
-              All transactions are secure and encrypted
-            </FieldDescription>
+            <FieldLegend>{label}</FieldLegend>
+            <FieldDescription>{description}</FieldDescription>
             <FieldGroup>{children}</FieldGroup>
           </FieldSet>
-          <Field orientation="horizontal">
+          <Field orientation="horizontal" className="flex justify-end">
             <Button type="submit">Submit</Button>
-            <Button variant="outline" type="button">
+            <Button onClick={() => UrlCancel && router.push(UrlCancel)}>
               Cancel
             </Button>
           </Field>

@@ -21,6 +21,8 @@ export interface DataTableProps<TData extends RowData> {
   data: TData[]
   filterColumnId?: string
   searchPlaceholder?: string
+  ToolbarActionLabel?: string
+  ToolbarActionUrl?: string
 }
 
 export function DataTable<TData extends RowData>({
@@ -28,6 +30,8 @@ export function DataTable<TData extends RowData>({
   data,
   filterColumnId,
   searchPlaceholder = "Filter...",
+  ToolbarActionLabel,
+  ToolbarActionUrl,
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -59,6 +63,8 @@ export function DataTable<TData extends RowData>({
         filterColumnId={filterColumnId}
         searchPlaceholder={searchPlaceholder}
         table={table}
+        ToolbarActionLabel={ToolbarActionLabel}
+        ToolbarActionUrl={ToolbarActionUrl}
       />
       <DataTableView table={table} />
       <DataTablePagination table={table} />
