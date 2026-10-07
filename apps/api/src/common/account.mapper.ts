@@ -1,4 +1,4 @@
-import type { Account, PublicAccount } from '@workspace/types';
+import type { Account, PublicAccount } from '@workspace/client/account';
 
 /** Pilihan select Prisma — tanpa `password`, tidak pernah ikut ke response. */
 export const ACCOUNT_SELECT = {

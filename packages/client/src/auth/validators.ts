@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-/** Input login — struktural identik dengan `LoginRequest` di @workspace/types. */
+/** Input login — struktural identik dengan `LoginRequest`. */
 export const loginSchema = z.object({
   email: z.email(),
   password: z.string().min(1),

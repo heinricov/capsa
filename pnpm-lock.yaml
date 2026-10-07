@@ -44,6 +44,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.2.7(@nestjs/common@11.2.7(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.2.7)(supports-color@8.1.1)
+      '@workspace/client':
+        specifier: workspace:*
+        version: link:../../packages/client
       '@workspace/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -56,15 +59,9 @@ importers:
       '@workspace/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@workspace/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@workspace/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@workspace/validators':
-        specifier: workspace:*
-        version: link:../../packages/validators
       bcryptjs:
         specifier: ^3.0.3
         version: 3.0.3
@@ -335,17 +332,17 @@ importers:
         specifier: ^4
         version: 4.1.11(@types/node@20.19.41)(vite@8.3.2(@types/node@20.19.41)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
 
-  packages/api-client:
+  packages/client:
     dependencies:
+      '@workspace/constants':
+        specifier: workspace:*
+        version: link:../constants
       '@workspace/errors':
         specifier: workspace:*
         version: link:../errors
-      '@workspace/types':
-        specifier: workspace:*
-        version: link:../types
-      '@workspace/validators':
-        specifier: workspace:*
-        version: link:../validators
+      zod:
+        specifier: ^4.6.5
+        version: 4.6.5
     devDependencies:
       '@workspace/eslint-config':
         specifier: workspace:*
@@ -496,25 +493,6 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  packages/types:
-    dependencies:
-      '@workspace/constants':
-        specifier: workspace:*
-        version: link:../constants
-    devDependencies:
-      '@workspace/eslint-config':
-        specifier: workspace:*
-        version: link:../../configs/eslint
-      '@workspace/typescript-config':
-        specifier: workspace:*
-        version: link:../../configs/typescript
-      eslint:
-        specifier: ^10
-        version: 10.11.0(jiti@2.7.0)(supports-color@8.1.1)
-      typescript:
-        specifier: ^5
-        version: 5.9.3
-
   packages/ui:
     dependencies:
       '@base-ui/react':
@@ -586,28 +564,6 @@ importers:
         version: 5.9.3
 
   packages/utils:
-    devDependencies:
-      '@workspace/eslint-config':
-        specifier: workspace:*
-        version: link:../../configs/eslint
-      '@workspace/typescript-config':
-        specifier: workspace:*
-        version: link:../../configs/typescript
-      eslint:
-        specifier: ^10
-        version: 10.11.0(jiti@2.7.0)(supports-color@8.1.1)
-      typescript:
-        specifier: ^5
-        version: 5.9.3
-
-  packages/validators:
-    dependencies:
-      '@workspace/constants':
-        specifier: workspace:*
-        version: link:../constants
-      zod:
-        specifier: ^4.6.5
-        version: 4.6.5
     devDependencies:
       '@workspace/eslint-config':
         specifier: workspace:*

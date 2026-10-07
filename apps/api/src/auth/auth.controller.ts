@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import type {
-  LoginRequest,
-  LoginResponse,
-  PublicAccount,
-} from '@workspace/types';
-import { loginSchema } from '@workspace/validators';
+import type { PublicAccount } from '@workspace/client/account';
+import {
+  type LoginRequest,
+  type LoginResponse,
+  loginSchema,
+} from '@workspace/client/auth';
 import type { JwtPayload } from '../common/jwt-payload';
 import { CurrentUser } from '../common/decorators/current-user';
 import { Public } from '../common/decorators/public';

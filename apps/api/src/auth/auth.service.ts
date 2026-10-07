@@ -2,11 +2,8 @@ import { Injectable, Inject } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import bcrypt from 'bcryptjs';
 import { UnauthorizedError } from '@workspace/errors';
-import type {
-  LoginRequest,
-  LoginResponse,
-  PublicAccount,
-} from '@workspace/types';
+import type { PublicAccount } from '@workspace/client/account';
+import type { LoginRequest, LoginResponse } from '@workspace/client/auth';
 import { ACCOUNT_SELECT, toPublicAccount } from '../common/account.mapper';
 import { PRISMA, type PrismaClient } from '../common/database.module';
 

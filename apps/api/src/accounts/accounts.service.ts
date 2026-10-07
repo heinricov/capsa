@@ -1,12 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 import bcrypt from 'bcryptjs';
 import { ConflictError, NotFoundError } from '@workspace/errors';
-import type { PaginatedResponse, PublicAccount, Role } from '@workspace/types';
 import type {
   CreateAccountInput,
-  PaginationQuery,
+  PublicAccount,
+  Role,
   UpdateAccountInput,
-} from '@workspace/validators';
+} from '@workspace/client/account';
+import type {
+  PaginatedResponse,
+  PaginationQuery,
+} from '@workspace/client/common';
 import { ACCOUNT_SELECT, toPublicAccount } from '../common/account.mapper';
 import { PRISMA, type PrismaClient } from '../common/database.module';
 

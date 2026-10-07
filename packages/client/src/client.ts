@@ -7,8 +7,9 @@ import {
   UnauthorizedError,
   ValidationError,
 } from "@workspace/errors"
-import type { ApiResponse } from "@workspace/types"
-import { createAccountsApi, type AccountsApi } from "./accounts.ts"
+import type { ApiResponse } from "./common/types.ts"
+import { type AccountApi, createAccountApi } from "./account/api/index.ts"
+import { type AuthApi, createAuthApi } from "./auth/api/index.ts"
 import type {
   ApiClientOptions,
   ApiErrorBody,
@@ -101,7 +102,8 @@ export interface ApiClient {
   setToken(token: string): void
   clearToken(): void
   getToken(): string | null
-  readonly accounts: AccountsApi
+  readonly account: AccountApi
+  readonly auth: AuthApi
 }
 
 export function createApiClient(options: ApiClientOptions = {}): ApiClient {
@@ -156,20 +158,22 @@ export function createApiClient(options: ApiClientOptions = {}): ApiClient {
     token = value
   }
 
-  const accounts = createAccountsApi({
+  const requester = {
     request,
     setToken,
     getToken: () => token,
-  })
+    clearToken: () => {
+      token = null
+    },
+  }
 
   return {
     baseUrl,
     request,
-    accounts,
+    account: createAccountApi(requester),
+    auth: createAuthApi(requester),
     setToken,
-    clearToken: () => {
-      token = null
-    },
+    clearToken: requester.clearToken,
     getToken: () => token,
   }
 }

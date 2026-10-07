@@ -1,5 +1,5 @@
 {
-  "name": "@workspace/validators",
+  "name": "@workspace/client",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -11,16 +11,16 @@
       "default": "./src/index.ts"
     },
     "./account": {
-      "types": "./src/account.ts",
-      "default": "./src/account.ts"
+      "types": "./src/account/index.ts",
+      "default": "./src/account/index.ts"
     },
     "./auth": {
-      "types": "./src/auth.ts",
-      "default": "./src/auth.ts"
+      "types": "./src/auth/index.ts",
+      "default": "./src/auth/index.ts"
     },
     "./common": {
-      "types": "./src/common.ts",
-      "default": "./src/common.ts"
+      "types": "./src/common/index.ts",
+      "default": "./src/common/index.ts"
     },
     "./package.json": "./package.json"
   },
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@workspace/constants": "workspace:*",
+    "@workspace/errors": "workspace:*",
     "zod": "^4.6.5"
   },
   "devDependencies": {

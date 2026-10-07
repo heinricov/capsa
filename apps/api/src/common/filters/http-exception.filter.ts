@@ -21,7 +21,7 @@ function statusToCode(status: number): ErrorCode {
 
 /**
  * Exception filter global: semua error → envelope
- * `{ success:false, statusCode, message, code }` (kontrak api-client).
+ * `{ success:false, statusCode, message, code }` (kontrak `@workspace/client`).
  */
 @Catch()
 export class HttpExceptionFilter implements ExceptionFilter {

@@ -1,8 +1,3 @@
-/**
- * Kontrak data Account — Single Source of Truth untuk seluruh monorepo.
- * Selaras dengan model `Account` di `packages/db` (Prisma).
- */
-
 import type { Role } from "@workspace/constants"
 
 export type { Role }
@@ -21,3 +16,11 @@ export interface Account {
 
 /** Versi aman untuk response API (tanpa password). */
 export type PublicAccount = Omit<Account, "password">
+
+/** Request registrasi account baru. */
+export interface RegisterRequest {
+  name: string
+  email: string
+  password: string
+  phone?: string | null
+}

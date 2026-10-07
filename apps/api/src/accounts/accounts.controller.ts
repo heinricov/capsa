@@ -8,18 +8,19 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import type { PaginatedResponse, PublicAccount } from '@workspace/types';
-import type {
-  CreateAccountInput,
-  PaginationQuery,
-  UpdateAccountInput,
-} from '@workspace/validators';
 import {
+  type CreateAccountInput,
+  type PublicAccount,
+  type UpdateAccountInput,
   createAccountSchema,
+  updateAccountSchema,
+} from '@workspace/client/account';
+import {
+  type PaginatedResponse,
+  type PaginationQuery,
   idSchema,
   paginationSchema,
-  updateAccountSchema,
-} from '@workspace/validators';
+} from '@workspace/client/common';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { AccountsService } from './accounts.service';
 

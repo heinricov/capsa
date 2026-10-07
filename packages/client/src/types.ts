@@ -22,3 +22,14 @@ export interface ApiErrorBody {
   message?: string | string[]
   code?: string
 }
+
+/**
+ * Kontrak minimal yang dibutuhkan dari base client — dipenuhi oleh
+ * `createApiClient` sehingga API per-domain bisa diuji secara terpisah.
+ */
+export interface Requester {
+  request<T>(path: string, options?: ApiRequestOptions): Promise<T>
+  setToken(token: string): void
+  getToken(): string | null
+  clearToken(): void
+}
