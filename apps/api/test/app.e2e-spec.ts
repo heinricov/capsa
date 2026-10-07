@@ -50,15 +50,17 @@ describe('Account API (e2e)', () => {
       });
   });
 
-  it('GET /accounts tanpa token → 401 UNAUTHORIZED (envelope)', () => {
+  // /accounts kini publik (@Public di class): request lolos guard tanpa token.
+  // Lanjutan ke service memanggil Prisma — di-mock jadi error → 500 (bukan 401).
+  it('GET /accounts tanpa token → lolos auth guard (500 karena DB mock)', () => {
     return request(app.getHttpServer())
       .get('/accounts')
-      .expect(401)
+      .expect(500)
       .expect((res) => {
         expect(res.body).toMatchObject({
           success: false,
-          statusCode: 401,
-          code: 'UNAUTHORIZED',
+          statusCode: 500,
+          code: 'INTERNAL_SERVER_ERROR',
         });
       });
   });

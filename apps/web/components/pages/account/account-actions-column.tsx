@@ -12,14 +12,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@workspace/ui/web/dropdown-menu"
-import type { Payment } from "@/components/table/payments"
+import type { PublicAccount } from "@workspace/client/account"
 import { features } from "@/components/table/table-features"
 
-export const paymentActionsColumn: ColumnDef<typeof features, Payment> = {
+export const accountActionsColumn: ColumnDef<typeof features, PublicAccount> = {
   id: "actions",
   enableHiding: false,
   cell: ({ row }) => {
-    const payment = row.original
+    const account = row.original
 
     return (
       <DropdownMenu>
@@ -32,13 +32,12 @@ export const paymentActionsColumn: ColumnDef<typeof features, Payment> = {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => navigator.clipboard.writeText(payment.id)}
+            onClick={() => navigator.clipboard.writeText(account.id)}
           >
-            Copy payment ID
+            Copy account ID
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>View customer</DropdownMenuItem>
-          <DropdownMenuItem>View payment details</DropdownMenuItem>
+          <DropdownMenuItem>View details</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     )

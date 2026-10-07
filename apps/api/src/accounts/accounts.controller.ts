@@ -22,8 +22,10 @@ import {
   paginationSchema,
 } from '@workspace/client/common';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
+import { Public } from '../common/decorators/public';
 import { AccountsService } from './accounts.service';
 
+@Public()
 @Controller('accounts')
 export class AccountsController {
   constructor(private readonly accountsService: AccountsService) {}

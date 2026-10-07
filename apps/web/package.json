@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@tanstack/react-table": "^9.2.6",
+    "@workspace/client": "workspace:*",
     "@workspace/env": "workspace:*",
     "@workspace/ui": "workspace:*",
     "cn": "^0.4.0",
