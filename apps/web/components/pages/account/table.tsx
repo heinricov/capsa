@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { api } from "@workspace/client"
 import type { PublicAccount } from "@workspace/client/account"
-import { accountColumns } from "@/components/pages/account/account-columns"
+import { makeAccountColumns } from "@/components/pages/account/account-columns"
 import { DataTable } from "@/components/table/data-table"
 
 export function AccountTable() {
@@ -12,27 +12,26 @@ export function AccountTable() {
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
 
-  React.useEffect(() => {
-    let cancelled = false
-
-    api.account
-      .list({ limit: 100 })
-      .then((page) => {
-        if (!cancelled) setRows(page.data)
-      })
-      .catch((err: unknown) => {
-        if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Gagal memuat data")
-        }
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
-      })
-
-    return () => {
-      cancelled = true
+  const load = React.useCallback(async () => {
+    try {
+      const page = await api.account.list({ limit: 100 })
+      setRows(page.data)
+      setError(null)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Gagal memuat data")
+    } finally {
+      setLoading(false)
     }
   }, [])
+
+  React.useEffect(() => {
+    load()
+  }, [load])
+
+  const columns = React.useMemo(
+    () => makeAccountColumns({ onDeleted: load }),
+    [load]
+  )
 
   if (loading) {
     return (
@@ -52,7 +51,7 @@ export function AccountTable() {
 
   return (
     <DataTable
-      columns={accountColumns}
+      columns={columns}
       data={rows}
       filterColumnId="email"
       searchPlaceholder="Filter emails..."

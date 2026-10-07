@@ -1,5 +1,5 @@
 import React from "react"
-import { Field, FieldLabel } from "@workspace/ui/web/field"
+import { Field, FieldError, FieldLabel } from "@workspace/ui/web/field"
 import {
   Select,
   SelectContent,
@@ -14,17 +14,35 @@ export function FieldSelect({
   label,
   placeholder,
   ItemsSelect,
+  value,
+  onValueChange,
+  error,
+  required,
+  disabled,
 }: {
   id: string
   label?: string
   placeholder?: string
   ItemsSelect: { value: string; label: string }[]
+  value?: string
+  onValueChange?: (value: string) => void
+  error?: string
+  required?: boolean
+  disabled?: boolean
 }) {
   return (
     <Field>
-      <FieldLabel htmlFor="checkout-7j9-exp-year-f59">{label}</FieldLabel>
-      <Select>
-        <SelectTrigger id={id}>
+      <FieldLabel htmlFor={id}>
+        {label}
+        {required && <span className="text-destructive"> *</span>}
+      </FieldLabel>
+      <Select
+        value={value}
+        onValueChange={(newValue) => onValueChange?.(String(newValue))}
+        required={required}
+        disabled={disabled}
+      >
+        <SelectTrigger id={id} aria-invalid={error ? true : undefined}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -37,6 +55,7 @@ export function FieldSelect({
           </SelectGroup>
         </SelectContent>
       </Select>
+      {error && <FieldError>{error}</FieldError>}
     </Field>
   )
 }

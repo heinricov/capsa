@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Oxanium } from "next/font/google"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@workspace/ui/web/sonner"
 import { cn } from "@workspace/ui/utils"
 
 const oxanium = Oxanium({ subsets: ["latin"], variable: "--font-sans" })
@@ -29,6 +30,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <Toaster />
       </body>
     </html>
   )

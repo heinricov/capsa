@@ -1,16 +1,44 @@
 import React from "react"
-import { Field, FieldLabel } from "@workspace/ui/web/field"
+import { Field, FieldError, FieldLabel } from "@workspace/ui/web/field"
 import { Textarea } from "@workspace/ui/web/textarea"
 
-export function FieldTextArea() {
+export function FieldTextArea({
+  id,
+  label,
+  placeholder,
+  value,
+  onChange,
+  error,
+  required,
+  disabled,
+}: {
+  id: string
+  label?: string
+  placeholder?: string
+  value?: string
+  onChange?: (value: string) => void
+  error?: string
+  required?: boolean
+  disabled?: boolean
+}) {
   return (
     <Field>
-      <FieldLabel htmlFor="checkout-7j9-optional-comments">Comments</FieldLabel>
+      <FieldLabel htmlFor={id}>
+        {label}
+        {required && <span className="text-destructive"> *</span>}
+      </FieldLabel>
       <Textarea
-        id="checkout-7j9-optional-comments"
-        placeholder="Add any additional comments"
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange && ((event) => onChange(event.target.value))}
+        required={required}
+        disabled={disabled}
+        aria-invalid={error ? true : undefined}
         className="resize-none"
       />
+      {error && <FieldError>{error}</FieldError>}
     </Field>
   )
 }

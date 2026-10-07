@@ -4,7 +4,7 @@ import { AccountForm } from "@/components/pages/account/account-form"
 export default function page() {
   return (
     <>
-      <AccountForm />
+      <AccountForm mode="create" />
     </>
   )
 }
