@@ -8,7 +8,7 @@ import { api } from "@workspace/client"
 import { createBoxSchema } from "@workspace/client/box"
 import { FieldForm } from "@/components/field/field-form"
 import { FieldInput } from "@/components/field/input"
-import { FieldSelect } from "@/components/field/select"
+import { FieldTextArea } from "@/components/field/textarea"
 
 type BoxFormMode = "create" | "view" | "edit"
 
@@ -212,11 +212,10 @@ export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
           required
           disabled={disabled}
         />
-        <FieldInput
+        <FieldTextArea
           id="description"
           label="Description"
           placeholder="Deskripsi (opsional)"
-          type="text"
           value={values.description}
           onChange={(value) => setValue("description", value)}
           error={fieldErrors.description}
