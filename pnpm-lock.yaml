@@ -47,6 +47,9 @@ importers:
       '@workspace/client':
         specifier: workspace:*
         version: link:../../packages/client
+      '@workspace/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
       '@workspace/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -208,6 +211,9 @@ importers:
       '@workspace/env':
         specifier: workspace:*
         version: link:../../packages/env
+      '@workspace/errors':
+        specifier: workspace:*
+        version: link:../../packages/errors
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui

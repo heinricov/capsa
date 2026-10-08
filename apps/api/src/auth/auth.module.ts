@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
+import { AUTH_TOKEN_TTL } from '@workspace/constants';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
@@ -15,7 +16,7 @@ if (!secret || secret.length < 32) {
     JwtModule.register({
       global: true,
       secret,
-      signOptions: { expiresIn: '24h' },
+      signOptions: { expiresIn: AUTH_TOKEN_TTL },
     }),
   ],
   controllers: [AuthController],

@@ -9,6 +9,7 @@ import { createBoxSchema } from "@workspace/client/box"
 import { FieldForm } from "@/components/field/field-form"
 import { FieldInput } from "@/components/field/input"
 import { FieldTextArea } from "@/components/field/textarea"
+import { useAuth } from "@/components/dashboard/auth-context"
 
 type BoxFormMode = "create" | "view" | "edit"
 
@@ -58,6 +59,7 @@ const EMPTY_VALUES: BoxFormValues = {
 export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
   const router = useRouter()
   const readOnly = mode === "view"
+  const { account } = useAuth()
 
   const [values, setValues] = React.useState<BoxFormValues>(EMPTY_VALUES)
   const [fieldErrors, setFieldErrors] = React.useState<FieldErrors>({})
@@ -132,8 +134,9 @@ export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
     setFieldErrors({})
     setFormError(null)
 
+    const userId = mode === "create" ? (account?.id ?? "") : values.userId
     const trimmed = {
-      userId: values.userId.trim(),
+      userId: userId.trim(),
       no: values.no.trim(),
       description: values.description.trim(),
     }
@@ -145,6 +148,10 @@ export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
     }
 
     if (mode === "create") {
+      if (!account) {
+        setFormError("Memuat data user…")
+        return
+      }
       const parsed = createBoxSchema.safeParse(payload)
       if (!parsed.success) {
         setFieldErrors(fieldErrorsOf(parsed.error))
@@ -195,11 +202,10 @@ export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
           placeholder="User ID (UUID)"
           type="text"
           autoComplete="off"
-          value={values.userId}
-          onChange={(value) => setValue("userId", value)}
+          value={mode === "create" ? (account?.id ?? "") : values.userId}
           error={fieldErrors.userId}
           required
-          disabled={disabled}
+          disabled
         />
         <FieldInput
           id="no"
