@@ -5,9 +5,12 @@ import type { PublicBox } from "../types.ts"
 
 export async function list(
   requester: Requester,
-  query?: Partial<PaginationQuery>,
+  query?: Partial<PaginationQuery>
 ): Promise<PaginatedResponse<PublicBox>> {
   return requester.request("/boxes", {
-    query: query as Record<string, string | number | boolean | undefined | null>,
+    query: query as Record<
+      string,
+      string | number | boolean | undefined | null
+    >,
   })
 }

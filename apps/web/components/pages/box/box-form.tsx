@@ -55,13 +55,7 @@ const EMPTY_VALUES: BoxFormValues = {
   description: "",
 }
 
-export function BoxForm({
-  mode,
-  id,
-}: {
-  mode: BoxFormMode
-  id?: string
-}) {
+export function BoxForm({ mode, id }: { mode: BoxFormMode; id?: string }) {
   const router = useRouter()
   const readOnly = mode === "view"
 
@@ -88,8 +82,7 @@ export function BoxForm({
       })
       .catch((err: unknown) => {
         if (cancelled) return
-        const message =
-          err instanceof Error ? err.message : "Gagal memuat box"
+        const message = err instanceof Error ? err.message : "Gagal memuat box"
         setFormError(message)
         toast.error(message)
       })
@@ -122,8 +115,7 @@ export function BoxForm({
       toast.success(successMessage)
       router.push(LIST_URL)
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Terjadi kesalahan"
+      const message = err instanceof Error ? err.message : "Terjadi kesalahan"
       const serverField = splitServerFieldError(message)
       if (serverField) {
         setFieldErrors({ [serverField.key]: serverField.message })
@@ -158,10 +150,7 @@ export function BoxForm({
         setFieldErrors(fieldErrorsOf(parsed.error))
         return
       }
-      await runSubmit(
-        () => api.box.create(parsed.data),
-        "Box berhasil dibuat"
-      )
+      await runSubmit(() => api.box.create(parsed.data), "Box berhasil dibuat")
       return
     }
 
@@ -178,11 +167,7 @@ export function BoxForm({
   }
 
   const label =
-    mode === "create"
-      ? "Add Box"
-      : mode === "edit"
-        ? "Edit Box"
-        : "Box Detail"
+    mode === "create" ? "Add Box" : mode === "edit" ? "Edit Box" : "Box Detail"
   const description =
     mode === "create"
       ? "Menambahkan Box Baru"

@@ -5,7 +5,7 @@ import type { UpdateBoxInput } from "../validators.ts"
 export async function update(
   requester: Requester,
   id: string,
-  body: UpdateBoxInput,
+  body: UpdateBoxInput
 ): Promise<PublicBox> {
   return requester.request(`/boxes/${id}`, {
     method: "PATCH",

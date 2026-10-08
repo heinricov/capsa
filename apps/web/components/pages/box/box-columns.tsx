@@ -51,7 +51,7 @@ export function makeBoxColumns({
       accessorKey: "description",
       header: "Description",
       cell: ({ row }) => (
-        <div className="capitalize truncate max-w-xs">
+        <div className="max-w-xs truncate capitalize">
           {row.getValue("description") ?? "—"}
         </div>
       ),

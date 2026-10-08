@@ -11,9 +11,7 @@ import { update } from "./update.ts"
 import { deleteBox } from "./delete.ts"
 
 export interface BoxApi {
-  list(
-    query?: Partial<PaginationQuery>
-  ): Promise<PaginatedResponse<PublicBox>>
+  list(query?: Partial<PaginationQuery>): Promise<PaginatedResponse<PublicBox>>
   get(id: string): Promise<PublicBox>
   create(body: CreateBoxRequest): Promise<PublicBox>
   update(id: string, body: UpdateBoxInput): Promise<PublicBox>

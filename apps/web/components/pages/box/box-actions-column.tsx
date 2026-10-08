@@ -53,9 +53,7 @@ function ActionsCell({
       onDeleted()
     } catch (err: unknown) {
       setOpen(false)
-      toast.error(
-        err instanceof Error ? err.message : "Gagal menghapus box"
-      )
+      toast.error(err instanceof Error ? err.message : "Gagal menghapus box")
     } finally {
       setDeleting(false)
     }
@@ -87,10 +85,7 @@ function ActionsCell({
             Edit
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            variant="destructive"
-            onClick={() => setOpen(true)}
-          >
+          <DropdownMenuItem variant="destructive" onClick={() => setOpen(true)}>
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -127,8 +122,6 @@ export function makeBoxActionsColumn({
   return {
     id: "actions",
     enableHiding: false,
-    cell: ({ row }) => (
-      <ActionsCell box={row.original} onDeleted={onDeleted} />
-    ),
+    cell: ({ row }) => <ActionsCell box={row.original} onDeleted={onDeleted} />,
   }
 }
