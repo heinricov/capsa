@@ -11,7 +11,10 @@ import { update } from "./update.ts"
 import { deleteBox } from "./delete.ts"
 
 export interface BoxApi {
-  list(query?: Partial<PaginationQuery>): Promise<PaginatedResponse<PublicBox>>
+  list(
+    query?: Partial<PaginationQuery>,
+    options?: { signal?: AbortSignal }
+  ): Promise<PaginatedResponse<PublicBox>>
   get(id: string): Promise<PublicBox>
   create(body: CreateBoxRequest): Promise<PublicBox>
   update(id: string, body: UpdateBoxInput): Promise<PublicBox>
@@ -20,7 +23,7 @@ export interface BoxApi {
 
 export function createBoxApi(requester: Requester): BoxApi {
   return {
-    list: (query) => list(requester, query),
+    list: (query, options) => list(requester, query, options),
     get: (id) => get(requester, id),
     create: (body) => create(requester, body),
     update: (id, body) => update(requester, id, body),

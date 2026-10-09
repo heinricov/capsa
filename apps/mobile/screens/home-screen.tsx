@@ -37,7 +37,11 @@ function formatDate(value: Date | string): string {
   return `${pad(date.getDate())} ${MONTHS[date.getMonth()]} ${date.getFullYear()}, ${pad(date.getHours())}.${pad(date.getMinutes())}`
 }
 
-export function HomeScreen() {
+export function HomeScreen({
+  onNavigateToBox,
+}: {
+  onNavigateToBox: () => void
+}) {
   const { account, signOut } = useAuth()
   const [signingOut, setSigningOut] = React.useState(false)
 
@@ -115,6 +119,14 @@ export function HomeScreen() {
           onPress={handleSignOut}
         >
           <ButtonText>Log out</ButtonText>
+        </Button>
+        <Button
+          size="lg"
+          className="h-11 w-full"
+          disabled={signingOut}
+          onPress={onNavigateToBox}
+        >
+          <ButtonText>Box</ButtonText>
         </Button>
       </View>
     </SafeAreaView>
