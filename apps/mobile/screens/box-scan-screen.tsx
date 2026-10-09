@@ -1,19 +1,12 @@
 import * as React from "react"
 import { StyleSheet, View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
 import { BackButton } from "../components/back-button"
-import { Navbar } from "../components/navbar"
 
 export function BoxScanScreen({ onBack }: { onBack: () => void }) {
   return (
-    <SafeAreaView
-      edges={["top", "bottom"]}
-      style={styles.safeArea}
-      className="bg-background"
-    >
-      <Navbar title="Input Box Scan" subtitle="Pindai QR untuk input box" />
+    <View style={styles.root}>
       <View style={styles.content}>
         <Card style={styles.card} className="rounded-lg">
           <Text size="sm" className="text-center text-muted-foreground">
@@ -24,12 +17,12 @@ export function BoxScanScreen({ onBack }: { onBack: () => void }) {
 
         <BackButton onPress={onBack} />
       </View>
-    </SafeAreaView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
     flex: 1,
   },
   content: {

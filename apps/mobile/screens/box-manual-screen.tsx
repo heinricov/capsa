@@ -1,6 +1,5 @@
 import * as React from "react"
 import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
 import { api } from "@workspace/client"
 import { AppError } from "@workspace/errors"
 import { Button, ButtonText } from "@workspace/mobile/button"
@@ -16,7 +15,6 @@ import { Input, InputField } from "@workspace/mobile/input"
 import { Text } from "@workspace/mobile/text"
 import { useAuth } from "../context/auth"
 import { BackButton } from "../components/back-button"
-import { Navbar } from "../components/navbar"
 
 export function BoxManualScreen({ onBack }: { onBack: () => void }) {
   const { account } = useAuth()
@@ -71,12 +69,7 @@ export function BoxManualScreen({ onBack }: { onBack: () => void }) {
   }
 
   return (
-    <SafeAreaView
-      edges={["top", "bottom"]}
-      style={styles.safeArea}
-      className="bg-background"
-    >
-      <Navbar title="Input Box Manual" subtitle="Masukkan nomor box baru" />
+    <View style={styles.safeArea}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={styles.flex}
@@ -148,7 +141,7 @@ export function BoxManualScreen({ onBack }: { onBack: () => void }) {
           </View>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </View>
   )
 }
 

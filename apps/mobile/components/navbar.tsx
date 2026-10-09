@@ -1,15 +1,14 @@
 import * as React from "react"
-import { Image, StyleSheet, View } from "react-native"
+import { Image, Pressable, StyleSheet, View } from "react-native"
 import { APP_NAME } from "@workspace/constants"
 import { Text } from "@workspace/mobile/text"
+import { IoSettingsOutline } from "./icons"
 
 type NavbarProps = {
-  title: string
-  subtitle?: string
-  right?: React.ReactNode
+  onSettings: () => void
 }
 
-export function Navbar({ title, subtitle, right }: NavbarProps) {
+export function Navbar({ onSettings }: NavbarProps) {
   return (
     <View style={styles.bar}>
       <View style={styles.brand}>
@@ -23,18 +22,16 @@ export function Navbar({ title, subtitle, right }: NavbarProps) {
         </Text>
       </View>
 
-      {/* <View style={styles.titles}>
-        <Text size="md" className="font-semibold" numberOfLines={1}>
-          {title}
-        </Text>
-        {subtitle ? (
-          <Text size="xs" style={styles.subtitle} numberOfLines={1}>
-            {subtitle}
-          </Text>
-        ) : null}
-      </View> */}
+      <View style={styles.spacer} />
 
-      <View style={styles.rightSlot}>{right}</View>
+      <Pressable
+        style={styles.settingsButton}
+        onPress={onSettings}
+        accessibilityRole="button"
+        accessibilityLabel="Profile"
+      >
+        <IoSettingsOutline size={22} color="#0f172a" />
+      </Pressable>
     </View>
   )
 }
@@ -60,16 +57,14 @@ const styles = StyleSheet.create({
     height: 28,
     borderRadius: 7,
   },
-  titles: {
+  spacer: {
     flex: 1,
+  },
+  settingsButton: {
+    width: 40,
+    height: 40,
     alignItems: "center",
-    gap: 1,
-  },
-  subtitle: {
-    color: "#6b7280",
-  },
-  rightSlot: {
-    alignItems: "flex-end",
-    minWidth: 0,
+    justifyContent: "center",
+    borderRadius: 8,
   },
 })
