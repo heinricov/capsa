@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { api } from "@workspace/client"
-import { Avatar, AvatarFallback } from "@workspace/ui/web/avatar"
+import { Avatar, AvatarFallback } from "@workspace/web/web/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,13 +11,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@workspace/ui/web/dropdown-menu"
+} from "@workspace/web/web/dropdown-menu"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 import {
   ChevronsUpDownIcon,
   BadgeCheckIcon,

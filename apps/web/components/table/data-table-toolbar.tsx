@@ -4,7 +4,7 @@ import type { RowData } from "@tanstack/react-table"
 import { ChevronDown, Columns3, RefreshCcw, SearchIcon } from "lucide-react"
 import * as React from "react"
 
-import { Button } from "@workspace/ui/web/button"
+import { Button } from "@workspace/web/web/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -12,8 +12,8 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@workspace/ui/web/dropdown-menu"
-import { Input } from "@workspace/ui/web/input"
+} from "@workspace/web/web/dropdown-menu"
+import { Input } from "@workspace/web/web/input"
 import type { DataTableInstance } from "@/components/table/table-features"
 import { useRouter } from "next/navigation"
 

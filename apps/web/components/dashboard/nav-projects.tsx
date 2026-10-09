@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@workspace/ui/web/dropdown-menu"
+} from "@workspace/web/web/dropdown-menu"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -15,7 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 import {
   MoreHorizontalIcon,
   FolderIcon,

@@ -7,8 +7,8 @@ import {
   FieldGroup,
   FieldLegend,
   FieldSet,
-} from "@workspace/ui/web/field"
-import { Button } from "@workspace/ui/web/button"
+} from "@workspace/web/web/field"
+import { Button } from "@workspace/web/web/button"
 import { useRouter } from "next/navigation"
 
 export function FieldForm({

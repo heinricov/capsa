@@ -8,7 +8,7 @@ import { toast } from "sonner"
 
 import { api } from "@workspace/client"
 import type { PublicBox } from "@workspace/client/box"
-import { Button } from "@workspace/ui/web/button"
+import { Button } from "@workspace/web/web/button"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +18,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@workspace/ui/web/alert-dialog"
+} from "@workspace/web/web/alert-dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,7 +27,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@workspace/ui/web/dropdown-menu"
+} from "@workspace/web/web/dropdown-menu"
 import { features } from "@/components/table/table-features"
 
 function ActionsCell({

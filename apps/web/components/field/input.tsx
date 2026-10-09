@@ -1,6 +1,6 @@
 import React from "react"
-import { Field, FieldError, FieldLabel } from "@workspace/ui/web/field"
-import { Input } from "@workspace/ui/web/input"
+import { Field, FieldError, FieldLabel } from "@workspace/web/web/field"
+import { Input } from "@workspace/web/web/input"
 
 export function FieldInput({
   id,

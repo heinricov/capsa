@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@workspace/ui/web/table"
+} from "@workspace/web/web/table"
 import type { DataTableInstance } from "@/components/table/table-features"
 
 interface DataTableViewProps<TData extends RowData> {

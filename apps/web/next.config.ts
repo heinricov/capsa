@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     "@workspace/constants",
     "@workspace/env",
     "@workspace/errors",
-    "@workspace/ui",
+    "@workspace/web",
   ],
 }
 

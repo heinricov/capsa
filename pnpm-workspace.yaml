@@ -2,6 +2,7 @@ packages:
   - "apps/*"
   - "configs/*"
   - "packages/*"
+  - "packages/ui/*"
 
 # NativeWind v5 RC hanya diuji dengan lightningcss ini. Versi lain
 # menyebabkan "global.css: failed to deserialize" saat Metro membundel.

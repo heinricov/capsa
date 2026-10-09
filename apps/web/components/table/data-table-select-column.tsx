@@ -2,7 +2,7 @@
 
 import type { ColumnDef, RowData } from "@tanstack/react-table"
 
-import { Checkbox } from "@workspace/ui/web/checkbox"
+import { Checkbox } from "@workspace/web/web/checkbox"
 import { features } from "@/components/table/table-features"
 
 export function makeSelectColumn<TData extends RowData>(): ColumnDef<

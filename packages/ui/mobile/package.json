@@ -1,0 +1,39 @@
+{
+  "name": "@workspace/mobile",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gluestack-ui/core": "^5.0.15",
+    "@gluestack-ui/utils": "^5.0.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^10",
+    "nativewind": "5.0.0-rc.0",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-css": "3.1.0-rc.0",
+    "react-native-svg": "15.15.5",
+    "typescript": "^5"
+  },
+  "exports": {
+    "./provider": "./src/gluestack-ui-provider/index.tsx",
+    "./button": "./src/button/index.tsx",
+    "./input": "./src/input/index.tsx",
+    "./card": "./src/card/index.tsx",
+    "./form-control": "./src/form-control/index.tsx",
+    "./text": "./src/text/index.tsx",
+    "./box": "./src/box/index.tsx",
+    "./vstack": "./src/vstack/index.tsx",
+    "./hstack": "./src/hstack/index.tsx",
+    "./divider": "./src/divider/index.tsx"
+  }
+}

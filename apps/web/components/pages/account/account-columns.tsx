@@ -3,7 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 
-import { Button } from "@workspace/ui/web/button"
+import { Button } from "@workspace/web/web/button"
 import type { PublicAccount } from "@workspace/client/account"
 import { makeSelectColumn } from "@/components/table/data-table-select-column"
 import { features } from "@/components/table/table-features"

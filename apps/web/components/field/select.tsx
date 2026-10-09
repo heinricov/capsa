@@ -1,5 +1,5 @@
 import React from "react"
-import { Field, FieldError, FieldLabel } from "@workspace/ui/web/field"
+import { Field, FieldError, FieldLabel } from "@workspace/web/web/field"
 import {
   Select,
   SelectContent,
@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/ui/web/select"
+} from "@workspace/web/web/select"
 
 export function FieldSelect({
   id,

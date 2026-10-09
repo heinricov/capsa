@@ -2,7 +2,7 @@
 
 import type { RowData } from "@tanstack/react-table"
 
-import { Button } from "@workspace/ui/web/button"
+import { Button } from "@workspace/web/web/button"
 import type { DataTableInstance } from "@/components/table/table-features"
 
 interface DataTablePaginationProps<TData extends RowData> {

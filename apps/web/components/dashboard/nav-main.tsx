@@ -4,7 +4,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@workspace/ui/web/collapsible"
+} from "@workspace/web/web/collapsible"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -14,7 +14,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 import { ChevronRightIcon } from "lucide-react"
 
 export function NavMain({

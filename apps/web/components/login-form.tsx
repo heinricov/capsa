@@ -9,19 +9,19 @@ import { toast } from "sonner"
 
 import { cn } from "cn"
 
-import { Button } from "@workspace/ui/web/button"
+import { Button } from "@workspace/web/web/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@workspace/ui/web/card"
+} from "@workspace/web/web/card"
 import {
   Field,
   FieldDescription,
   FieldSeparator,
-} from "@workspace/ui/web/field"
+} from "@workspace/web/web/field"
 import { FieldForm } from "@/components/field/field-form"
 import { FieldInput } from "@/components/field/input"
 import { getToken, setToken } from "@/lib/auth"

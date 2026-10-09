@@ -26,7 +26,7 @@ export default {
   plugins: [tailwindcss],
   // Absolute so it resolves regardless of the cwd Prettier runs from.
   tailwindStylesheet: fileURLToPath(
-    new URL("../../packages/ui/src/styles/globals.css", import.meta.url)
+    new URL("../../packages/ui/web/src/styles/globals.css", import.meta.url)
   ),
   tailwindFunctions: ["cn", "cva"],
 }

@@ -8,7 +8,7 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
   useSidebar,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 import { BsFillBoxSeamFill } from "react-icons/bs"
 
 export function AppLogo() {

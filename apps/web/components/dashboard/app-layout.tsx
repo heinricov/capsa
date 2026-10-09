@@ -6,13 +6,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@workspace/ui/web/breadcrumb"
-import { Separator } from "@workspace/ui/web/separator"
+} from "@workspace/web/web/breadcrumb"
+import { Separator } from "@workspace/web/web/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (

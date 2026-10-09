@@ -4,11 +4,11 @@
     "allowImportingTsExtensions": true,
     "paths": {
       "@/*": ["./*"],
-      "@workspace/ui/*": ["../../packages/ui/src/*"],
-      "@workspace/ui/variants/*": ["../../packages/ui/src/shared/variants/*"],
-      "@workspace/ui/types/*": ["../../packages/ui/src/shared/types/*"],
-      "@workspace/ui/utils": ["../../packages/ui/src/shared/utils/utils.ts"],
-      "@workspace/ui/utils/*": ["../../packages/ui/src/shared/utils/*"]
+      "@workspace/web/*": ["../../packages/ui/web/src/*"],
+      "@workspace/web/variants/*": ["../../packages/ui/web/src/shared/variants/*"],
+      "@workspace/web/types/*": ["../../packages/ui/web/src/shared/types/*"],
+      "@workspace/web/utils": ["../../packages/ui/web/src/shared/utils/utils.ts"],
+      "@workspace/web/utils/*": ["../../packages/ui/web/src/shared/utils/*"]
     },
     "plugins": [
       {

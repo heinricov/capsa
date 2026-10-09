@@ -9,3 +9,6 @@ export const AUTH_TOKEN_MAX_AGE_SECONDS = 60 * 60 * 24
 
 /** Nama cookie penyimpanan token JWT di web. */
 export const AUTH_COOKIE_NAME = "capsa_token"
+
+/** Key penyimpanan token JWT di mobile (expo-secure-store). */
+export const AUTH_STORAGE_KEY = "capsa_token"

@@ -1,6 +1,6 @@
 import React from "react"
-import { Field, FieldError, FieldLabel } from "@workspace/ui/web/field"
-import { Textarea } from "@workspace/ui/web/textarea"
+import { Field, FieldError, FieldLabel } from "@workspace/web/web/field"
+import { Textarea } from "@workspace/web/web/textarea"
 
 export function FieldTextArea({
   id,

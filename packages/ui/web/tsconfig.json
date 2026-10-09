@@ -1,0 +1,17 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "paths": {
+      "@workspace/web/*": ["./src/*"],
+      "@workspace/web/variants/*": ["./src/shared/variants/*"],
+      "@workspace/web/types/*": ["./src/shared/types/*"],
+      "@workspace/web/utils": ["./src/shared/utils/utils.ts"],
+      "@workspace/web/utils/*": ["./src/shared/utils/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

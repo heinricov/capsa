@@ -5,11 +5,11 @@
 @import "nativewind/theme";
 
 /* Shared design tokens (identical to the web app). */
-@import "../../packages/ui/src/styles/tokens.css";
+@import "../../packages/ui/web/src/styles/tokens.css";
 
 /*
  * Tailwind must scan every file that contains class names, including the
- * shared UI package in this monorepo.
+ * shared mobile UI package (Gluestack components style via tva() strings).
  */
 @source "./**/*.{ts,tsx}";
-@source "../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../packages/ui/mobile/**/*.{ts,tsx}";

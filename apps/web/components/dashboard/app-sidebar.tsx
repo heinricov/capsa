@@ -11,7 +11,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@workspace/ui/web/sidebar"
+} from "@workspace/web/web/sidebar"
 import { LuMonitorCheck } from "react-icons/lu"
 import { GrDatabase } from "react-icons/gr"
 

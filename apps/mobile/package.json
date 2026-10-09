@@ -13,17 +13,25 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@workspace/client": "workspace:*",
+    "@workspace/constants": "workspace:*",
     "@workspace/env": "workspace:*",
-    "@workspace/ui": "workspace:*",
+    "@workspace/errors": "workspace:*",
+    "@workspace/mobile": "workspace:*",
+    "cn": "^0.4.0",
     "expo": "~57.0.26",
+    "expo-secure-store": "~57.0.4",
     "expo-status-bar": "~57.0.1",
     "expo-system-ui": "~57.0.4",
     "nativewind": "5.0.0-rc.0",
     "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-native": "0.86.3",
     "react-native-css": "3.1.0-rc.0",
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.5",
+    "react-native-web": "^0.21.3",
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
