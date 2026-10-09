@@ -7,6 +7,7 @@ import { Button, ButtonText } from "@workspace/mobile/button"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
 import { BackButton } from "../components/back-button"
+import { Navbar } from "../components/navbar"
 
 type LoadState =
   | { status: "loading" }
@@ -66,25 +67,21 @@ export function BoxScreen({
       style={styles.safeArea}
       className="bg-background"
     >
-      <View style={styles.content}>
-        <View style={styles.header}>
-          <View style={styles.headerText}>
-            <Text size="2xl" className="font-semibold">
-              Box
-            </Text>
-            <Text size="sm" className="text-muted-foreground">
-              Daftar box kamu
-            </Text>
-          </View>
+      <Navbar
+        title="Box"
+        subtitle="Daftar box kamu"
+        right={
           <Button
-            size="lg"
-            className="h-11 w-full"
+            variant="outline"
+            size="sm"
+            style={styles.addIconButton}
             onPress={() => setAddOpen(true)}
           >
-            <ButtonText>Add Box</ButtonText>
+            <ButtonText style={styles.addIconButtonText}>Add Box</ButtonText>
           </Button>
-        </View>
-
+        }
+      />
+      <View style={styles.content}>
         {state.status === "loading" ? (
           <View style={styles.grid}>
             {SKELETON_KEYS.map((key) => (
@@ -124,7 +121,9 @@ export function BoxScreen({
         )}
       </View>
 
-      <BackButton onPress={onBack} />
+      <View style={styles.footer}>
+        <BackButton onPress={onBack} />
+      </View>
 
       <Modal
         transparent
@@ -178,24 +177,18 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 24,
     paddingHorizontal: 24,
-    paddingTop: 40,
+    paddingTop: 24,
     paddingBottom: 24,
-  },
-  header: {
-    gap: 16,
-  },
-  headerText: {
-    gap: 4,
   },
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignContent: "flex-start",
-    gap: 16,
+    gap: 12,
   },
   boxCard: {
-    width: "48%",
+    width: "47%",
     minHeight: 104,
     alignItems: "center",
     justifyContent: "center",
@@ -206,7 +199,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   skeletonCard: {
-    width: "48%",
+    width: "47%",
     minHeight: 104,
     borderRadius: 12,
     backgroundColor: "#e3e7e8",
@@ -216,6 +209,10 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: "center",
     justifyContent: "center",
+  },
+  footer: {
+    paddingHorizontal: 24,
+    paddingBottom: 16,
   },
   overlay: {
     flex: 1,
@@ -237,5 +234,18 @@ const styles = StyleSheet.create({
   dialogHeader: {
     gap: 4,
     marginBottom: 4,
+  },
+  addIconButton: {
+    height: 36,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: "#007595",
+    backgroundColor: "#ffffff",
+    borderRadius: 8,
+  },
+  addIconButtonText: {
+    color: "#007595",
+    fontSize: 13,
+    fontWeight: "500",
   },
 })

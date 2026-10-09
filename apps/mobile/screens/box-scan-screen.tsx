@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
 import { BackButton } from "../components/back-button"
+import { Navbar } from "../components/navbar"
 
 export function BoxScanScreen({ onBack }: { onBack: () => void }) {
   return (
@@ -12,16 +13,8 @@ export function BoxScanScreen({ onBack }: { onBack: () => void }) {
       style={styles.safeArea}
       className="bg-background"
     >
+      <Navbar title="Input Box Scan" subtitle="Pindai QR untuk input box" />
       <View style={styles.content}>
-        <View style={styles.header}>
-          <Text size="2xl" className="font-semibold">
-            Input Box Scan
-          </Text>
-          <Text size="sm" className="text-muted-foreground">
-            Pindai QR untuk input box
-          </Text>
-        </View>
-
         <Card style={styles.card} className="rounded-lg">
           <Text size="sm" className="text-center text-muted-foreground">
             Fitur scan belum tersedia. Screen ini akan menampilkan kamera untuk
@@ -43,11 +36,8 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 24,
     paddingHorizontal: 24,
-    paddingTop: 40,
+    paddingTop: 24,
     paddingBottom: 24,
-  },
-  header: {
-    gap: 4,
   },
   card: {
     flex: 1,

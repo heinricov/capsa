@@ -1,9 +1,11 @@
 import * as React from "react"
-import { View, StyleSheet } from "react-native"
+import { Modal, Pressable, StyleSheet, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Button, ButtonText } from "@workspace/mobile/button"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
+import { BackButton } from "../components/back-button"
+import { Navbar } from "../components/navbar"
 import { useAuth } from "../context/auth"
 
 const MONTHS = [
@@ -44,6 +46,7 @@ export function HomeScreen({
 }) {
   const { account, signOut } = useAuth()
   const [signingOut, setSigningOut] = React.useState(false)
+  const [confirmOpen, setConfirmOpen] = React.useState(false)
 
   if (!account) return null
 
@@ -71,16 +74,8 @@ export function HomeScreen({
       style={styles.safeArea}
       className="bg-background"
     >
+      <Navbar title="Home" subtitle="Sedang login sebagai" />
       <View style={styles.content}>
-        <View style={styles.header}>
-          <Text size="2xl" className="font-semibold">
-            Home
-          </Text>
-          <Text size="sm" className="text-muted-foreground">
-            Sedang login sebagai
-          </Text>
-        </View>
-
         <Card style={styles.card} className="rounded-lg">
           <View style={styles.profileRow}>
             <View style={styles.avatar}>
@@ -115,10 +110,11 @@ export function HomeScreen({
           variant="destructive"
           size="lg"
           className="h-11 w-full"
+          style={styles.destructiveButton}
           disabled={signingOut}
-          onPress={handleSignOut}
+          onPress={() => setConfirmOpen(true)}
         >
-          <ButtonText>Log out</ButtonText>
+          <ButtonText style={styles.destructiveButtonText}>Log out</ButtonText>
         </Button>
         <Button
           size="lg"
@@ -129,6 +125,46 @@ export function HomeScreen({
           <ButtonText>Box</ButtonText>
         </Button>
       </View>
+
+      <Modal
+        transparent
+        visible={confirmOpen}
+        animationType="fade"
+        onRequestClose={() => setConfirmOpen(false)}
+      >
+        <Pressable style={styles.overlay} onPress={() => setConfirmOpen(false)}>
+          <Pressable style={styles.dialog} onPress={() => undefined}>
+            <View style={styles.dialogHeader}>
+              <Text size="lg" className="font-semibold">
+                Log out?
+              </Text>
+              <Text size="sm" className="text-muted-foreground">
+                Kamu yakin ingin keluar dari akun ini?
+              </Text>
+            </View>
+            <Button
+              variant="destructive"
+              size="lg"
+              className="h-11 w-full"
+              style={styles.destructiveButton}
+              disabled={signingOut}
+              onPress={() => {
+                setConfirmOpen(false)
+                void handleSignOut()
+              }}
+            >
+              <ButtonText style={styles.destructiveButtonText}>
+                {signingOut ? "Logging out…" : "Log out"}
+              </ButtonText>
+            </Button>
+            <BackButton
+              label="Batal"
+              disabled={signingOut}
+              onPress={() => setConfirmOpen(false)}
+            />
+          </Pressable>
+        </Pressable>
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -141,10 +177,8 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 24,
     paddingHorizontal: 24,
-    paddingVertical: 40,
-  },
-  header: {
-    gap: 4,
+    paddingTop: 24,
+    paddingBottom: 40,
   },
   card: {
     gap: 16,
@@ -177,5 +211,36 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "space-between",
     gap: 12,
+  },
+  destructiveButton: {
+    backgroundColor: "#e7000b",
+    borderWidth: 1,
+    borderColor: "#e7000b",
+  },
+  destructiveButtonText: {
+    color: "#ffffff",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
+  },
+  dialog: {
+    width: "100%",
+    maxWidth: 320,
+    gap: 12,
+    padding: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#e3e7e8",
+    backgroundColor: "#ffffff",
+  },
+  dialogHeader: {
+    gap: 4,
+    marginBottom: 4,
   },
 })

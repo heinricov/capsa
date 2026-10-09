@@ -16,6 +16,7 @@ import { Input, InputField } from "@workspace/mobile/input"
 import { Text } from "@workspace/mobile/text"
 import { useAuth } from "../context/auth"
 import { BackButton } from "../components/back-button"
+import { Navbar } from "../components/navbar"
 
 export function BoxManualScreen({ onBack }: { onBack: () => void }) {
   const { account } = useAuth()
@@ -75,20 +76,12 @@ export function BoxManualScreen({ onBack }: { onBack: () => void }) {
       style={styles.safeArea}
       className="bg-background"
     >
+      <Navbar title="Input Box Manual" subtitle="Masukkan nomor box baru" />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={styles.flex}
       >
         <View style={styles.content}>
-          <View style={styles.header}>
-            <Text size="2xl" className="font-semibold">
-              Input Box Manual
-            </Text>
-            <Text size="sm" className="text-muted-foreground">
-              Masukkan nomor box baru
-            </Text>
-          </View>
-
           <Card style={styles.card} className="rounded-lg">
             <View style={styles.fields}>
               {formError ? (
@@ -170,11 +163,8 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 24,
     paddingHorizontal: 24,
-    paddingTop: 40,
+    paddingTop: 24,
     paddingBottom: 24,
-  },
-  header: {
-    gap: 4,
   },
   card: {
     padding: 16,
