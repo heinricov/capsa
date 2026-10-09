@@ -1,5 +1,5 @@
 import * as React from "react"
-import { KeyboardAvoidingView, Platform, View } from "react-native"
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { api } from "@workspace/client"
 import { loginSchema } from "@workspace/client/auth"
@@ -7,7 +7,6 @@ import { AppError } from "@workspace/errors"
 import { Box } from "@workspace/mobile/box"
 import { Button, ButtonText } from "@workspace/mobile/button"
 import { Card } from "@workspace/mobile/card"
-import { Divider } from "@workspace/mobile/divider"
 import {
   FormControl,
   FormControlError,
@@ -15,7 +14,6 @@ import {
   FormControlLabel,
   FormControlLabelText,
 } from "@workspace/mobile/form-control"
-import { HStack } from "@workspace/mobile/hstack"
 import { Input, InputField } from "@workspace/mobile/input"
 import { Text } from "@workspace/mobile/text"
 import { VStack } from "@workspace/mobile/vstack"
@@ -70,54 +68,33 @@ export function LoginScreen() {
     }
   }
 
-  function handleSocial() {
-    setFormError("Login dengan Apple/Google belum tersedia")
-  }
-
   return (
-    <SafeAreaView edges={["top", "bottom"]} className="flex-1 bg-muted">
+    <SafeAreaView
+      edges={["top", "bottom"]}
+      style={styles.safeArea}
+      className="bg-muted"
+    >
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}
-        className="flex-1"
+        style={styles.flex}
       >
-        <View className="flex-1 justify-center gap-6 px-6 py-10">
+        <View style={styles.container}>
           <Logo />
-          <Card className="gap-4 rounded-lg">
+          <Card style={styles.card} className="rounded-lg">
             <Box className="items-center gap-1">
               <Text size="xl" className="font-medium">
                 Welcome back
               </Text>
               <Text size="xs" className="leading-relaxed text-muted-foreground">
-                Login with your Apple or Google account
+                Login with your email and password
               </Text>
             </Box>
-            <VStack className="w-full gap-4">
+            <VStack style={styles.fieldGroup}>
               {formError ? (
                 <Text size="xs" className="text-destructive">
                   {formError}
                 </Text>
               ) : null}
-              <Button
-                variant="outline"
-                className="h-10 w-full"
-                onPress={handleSocial}
-              >
-                <ButtonText>Login with Apple</ButtonText>
-              </Button>
-              <Button
-                variant="outline"
-                className="h-10 w-full"
-                onPress={handleSocial}
-              >
-                <ButtonText>Login with Google</ButtonText>
-              </Button>
-              <HStack className="items-center gap-3">
-                <Divider className="flex-1" />
-                <Text size="xs" className="text-muted-foreground">
-                  Or continue with
-                </Text>
-                <Divider className="flex-1" />
-              </HStack>
               <FormControl isInvalid={Boolean(errors.email)}>
                 <FormControlLabel className="w-full">
                   <FormControlLabelText className="text-xs">
@@ -186,7 +163,11 @@ export function LoginScreen() {
               </Button>
             </VStack>
           </Card>
-          <Text size="xs" className="text-center text-muted-foreground">
+          <Text
+            size="xs"
+            style={styles.terms}
+            className="text-center text-muted-foreground"
+          >
             By clicking continue, you agree to our Terms of Service and Privacy
             Policy.
           </Text>
@@ -195,3 +176,29 @@ export function LoginScreen() {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 24,
+    paddingVertical: 40,
+  },
+  card: {
+    marginTop: 24,
+    gap: 16,
+  },
+  fieldGroup: {
+    width: "100%",
+    gap: 16,
+  },
+  terms: {
+    marginTop: 24,
+  },
+})
