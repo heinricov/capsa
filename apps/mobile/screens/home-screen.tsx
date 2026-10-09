@@ -112,7 +112,7 @@ export function HomeScreen({
         </Card>
 
         <Button
-          variant="outline"
+          variant="destructive"
           size="lg"
           className="h-11 w-full"
           disabled={signingOut}

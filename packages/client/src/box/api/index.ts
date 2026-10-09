@@ -16,7 +16,10 @@ export interface BoxApi {
     options?: { signal?: AbortSignal }
   ): Promise<PaginatedResponse<PublicBox>>
   get(id: string): Promise<PublicBox>
-  create(body: CreateBoxRequest): Promise<PublicBox>
+  create(
+    body: CreateBoxRequest,
+    options?: { signal?: AbortSignal }
+  ): Promise<PublicBox>
   update(id: string, body: UpdateBoxInput): Promise<PublicBox>
   delete(id: string): Promise<{ id: string }>
 }
@@ -25,7 +28,7 @@ export function createBoxApi(requester: Requester): BoxApi {
   return {
     list: (query, options) => list(requester, query, options),
     get: (id) => get(requester, id),
-    create: (body) => create(requester, body),
+    create: (body, options) => create(requester, body, options),
     update: (id, body) => update(requester, id, body),
     delete: (id) => deleteBox(requester, id),
   }

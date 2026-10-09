@@ -1,21 +1,31 @@
 import * as React from "react"
-import { StyleSheet, View } from "react-native"
+import { Modal, Pressable, StyleSheet, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { api } from "@workspace/client"
 import type { PublicBox } from "@workspace/client/box"
 import { Button, ButtonText } from "@workspace/mobile/button"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
+import { BackButton } from "../components/back-button"
 
 type LoadState =
   | { status: "loading" }
   | { status: "error"; message: string }
   | { status: "ready"; boxes: PublicBox[] }
 
+export type AddBoxMode = "manual" | "scan"
+
 const SKELETON_KEYS = ["1", "2", "3", "4", "5", "6"]
 
-export function BoxScreen({ onBack }: { onBack: () => void }) {
+export function BoxScreen({
+  onBack,
+  onNavigateToInput,
+}: {
+  onBack: () => void
+  onNavigateToInput: (mode: AddBoxMode) => void
+}) {
   const [state, setState] = React.useState<LoadState>({ status: "loading" })
+  const [addOpen, setAddOpen] = React.useState(false)
   const abortRef = React.useRef<AbortController | null>(null)
 
   const load = React.useCallback(async () => {
@@ -66,7 +76,11 @@ export function BoxScreen({ onBack }: { onBack: () => void }) {
               Daftar box kamu
             </Text>
           </View>
-          <Button variant="outline" size="lg" className="h-11 w-full" disabled>
+          <Button
+            size="lg"
+            className="h-11 w-full"
+            onPress={() => setAddOpen(true)}
+          >
             <ButtonText>Add Box</ButtonText>
           </Button>
         </View>
@@ -110,14 +124,48 @@ export function BoxScreen({ onBack }: { onBack: () => void }) {
         )}
       </View>
 
-      <Button
-        variant="ghost"
-        size="sm"
-        className="h-10 w-full"
-        onPress={onBack}
+      <BackButton onPress={onBack} />
+
+      <Modal
+        transparent
+        visible={addOpen}
+        animationType="fade"
+        onRequestClose={() => setAddOpen(false)}
       >
-        <ButtonText>Kembali</ButtonText>
-      </Button>
+        <Pressable style={styles.overlay} onPress={() => setAddOpen(false)}>
+          <Pressable style={styles.dialog} onPress={() => undefined}>
+            <View style={styles.dialogHeader}>
+              <Text size="lg" className="font-semibold">
+                Add Box
+              </Text>
+              <Text size="xs" className="text-muted-foreground">
+                Pilih metode input box
+              </Text>
+            </View>
+            <Button
+              size="lg"
+              className="h-11 w-full"
+              onPress={() => {
+                setAddOpen(false)
+                onNavigateToInput("manual")
+              }}
+            >
+              <ButtonText>Manual</ButtonText>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-11 w-full"
+              onPress={() => {
+                setAddOpen(false)
+                onNavigateToInput("scan")
+              }}
+            >
+              <ButtonText>Scan</ButtonText>
+            </Button>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -168,5 +216,26 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: "center",
     justifyContent: "center",
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
+  },
+  dialog: {
+    width: "100%",
+    maxWidth: 320,
+    gap: 12,
+    padding: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#e3e7e8",
+    backgroundColor: "#ffffff",
+  },
+  dialogHeader: {
+    gap: 4,
+    marginBottom: 4,
   },
 })
