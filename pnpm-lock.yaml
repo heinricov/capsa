@@ -150,6 +150,9 @@ importers:
       '@workspace/mobile':
         specifier: workspace:*
         version: link:../../packages/ui/mobile
+      '@workspace/public':
+        specifier: workspace:*
+        version: link:../../packages/public
       cn:
         specifier: ^0.4.0
         version: 0.4.0
@@ -241,6 +244,9 @@ importers:
       '@workspace/errors':
         specifier: workspace:*
         version: link:../../packages/errors
+      '@workspace/public':
+        specifier: workspace:*
+        version: link:../../packages/public
       '@workspace/web':
         specifier: workspace:*
         version: link:../../packages/ui/web
@@ -534,6 +540,8 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.3
+
+  packages/public: {}
 
   packages/ui/mobile:
     dependencies:

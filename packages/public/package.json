@@ -1,0 +1,10 @@
+{
+  "name": "@workspace/public",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./*.png": "./*.png",
+    "./*.ico": "./*.ico",
+    "./package.json": "./package.json"
+  }
+}

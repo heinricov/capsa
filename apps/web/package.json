@@ -17,6 +17,7 @@
     "@workspace/constants": "workspace:*",
     "@workspace/env": "workspace:*",
     "@workspace/errors": "workspace:*",
+    "@workspace/public": "workspace:*",
     "@workspace/web": "workspace:*",
     "cn": "^0.4.0",
     "lucide-react": "^1.49.0",

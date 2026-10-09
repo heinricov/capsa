@@ -13,7 +13,7 @@ export function Navbar({ onSettings }: NavbarProps) {
     <View style={styles.bar}>
       <View style={styles.brand}>
         <Image
-          source={require("../assets/icon.png")}
+          source={require("@workspace/public/icon.png")}
           style={styles.brandIcon}
           accessibilityLabel={`${APP_NAME} icon`}
         />

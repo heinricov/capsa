@@ -18,6 +18,7 @@
     "@workspace/env": "workspace:*",
     "@workspace/errors": "workspace:*",
     "@workspace/mobile": "workspace:*",
+    "@workspace/public": "workspace:*",
     "cn": "^0.4.0",
     "expo": "~57.0.26",
     "expo-dev-client": "~57.0.19",

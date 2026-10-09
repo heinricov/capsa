@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
+import appIcon from "@workspace/public/icon.png"
 
 import {
   SidebarMenu,
@@ -9,7 +11,6 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@workspace/web/web/sidebar"
-import { BsFillBoxSeamFill } from "react-icons/bs"
 
 export function AppLogo() {
   const { state } = useSidebar()
@@ -30,8 +31,15 @@ export function AppLogo() {
           render={<div />}
           className="border data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
         >
-          <div className="flex aspect-square size-6 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <BsFillBoxSeamFill />
+          <div className="flex aspect-square size-6 items-center justify-center overflow-hidden rounded-lg">
+            <Image
+              src={appIcon}
+              alt="Capsa"
+              width={24}
+              height={24}
+              className="size-full object-cover"
+              priority
+            />
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-medium">CAPSA</span>
