@@ -1,11 +1,25 @@
 import * as React from "react"
-import { View } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { Box } from "@workspace/mobile/box"
 import { Button, ButtonText } from "@workspace/mobile/button"
 import { Card } from "@workspace/mobile/card"
 import { Text } from "@workspace/mobile/text"
 import { useAuth } from "../context/auth"
+
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+]
 
 function initials(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean)
@@ -18,7 +32,9 @@ function initials(name: string): string {
 
 function formatDate(value: Date | string): string {
   const date = typeof value === "string" ? new Date(value) : value
-  return date.toLocaleString()
+  if (Number.isNaN(date.getTime())) return "—"
+  const pad = (n: number): string => String(n).padStart(2, "0")
+  return `${pad(date.getDate())} ${MONTHS[date.getMonth()]} ${date.getFullYear()}, ${pad(date.getHours())}.${pad(date.getMinutes())}`
 }
 
 export function HomeScreen() {
@@ -46,9 +62,13 @@ export function HomeScreen() {
   ]
 
   return (
-    <SafeAreaView edges={["top", "bottom"]} className="flex-1 bg-background">
-      <View className="flex-1 gap-6 px-6 py-10">
-        <View className="gap-1">
+    <SafeAreaView
+      edges={["top", "bottom"]}
+      style={styles.safeArea}
+      className="bg-background"
+    >
+      <View style={styles.content}>
+        <View style={styles.header}>
           <Text size="2xl" className="font-semibold">
             Home
           </Text>
@@ -57,36 +77,29 @@ export function HomeScreen() {
           </Text>
         </View>
 
-        <Card>
-          <Box className="flex-row items-center gap-3">
-            <View className="size-10 items-center justify-center rounded-full bg-primary">
+        <Card style={styles.card} className="rounded-lg">
+          <View style={styles.profileRow}>
+            <View style={styles.avatar}>
               <Text size="xs" className="font-medium text-primary-foreground">
                 {initials(account.name)}
               </Text>
             </View>
-            <Box className="flex-1 gap-0.5">
+            <View style={styles.profileInfo}>
               <Text size="sm" className="font-medium">
                 {account.name}
               </Text>
               <Text size="xs" className="text-muted-foreground">
                 {account.email}
               </Text>
-            </Box>
-          </Box>
-          <View className="gap-2 border-t border-border pt-3">
+            </View>
+          </View>
+          <View style={styles.details}>
             {rows.map(([label, value]) => (
-              <View
-                key={label}
-                className="flex-row items-start justify-between gap-3"
-              >
+              <View key={label} style={styles.row}>
                 <Text size="xs" className="text-muted-foreground">
                   {label}
                 </Text>
-                <Text
-                  size="xs"
-                  className="flex-1 text-right text-foreground"
-                  numberOfLines={1}
-                >
+                <Text size="xs" className="flex-1 text-right text-foreground">
                   {value}
                 </Text>
               </View>
@@ -107,3 +120,50 @@ export function HomeScreen() {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    gap: 24,
+    paddingHorizontal: 24,
+    paddingVertical: 40,
+  },
+  header: {
+    gap: 4,
+  },
+  card: {
+    gap: 16,
+    padding: 16,
+  },
+  profileRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 999,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  profileInfo: {
+    flex: 1,
+    gap: 2,
+  },
+  details: {
+    gap: 8,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: "#e3e7e8",
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: 12,
+  },
+})

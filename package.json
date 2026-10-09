@@ -8,6 +8,7 @@
     "lint": "turbo lint",
     "format": "turbo format",
     "typecheck": "turbo typecheck",
+    "api:ip": "node scripts/set-expo-api-url.mjs",
     "shadcn": "cd apps/web && shadcn"
   },
   "devDependencies": {

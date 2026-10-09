@@ -133,6 +133,9 @@ export function createApiClient(options: ApiClientOptions = {}): ApiClient {
         signal,
       })
     } catch (cause) {
+      // Abort (dibatalkan pemakai) bukan kegagalan jaringan — teruskan apa
+      // adanya agar pemanggil bisa membedakan cancel vs network error.
+      if (cause instanceof Error && cause.name === "AbortError") throw cause
       throw new ApiNetworkError("Network request failed", { cause })
     }
 

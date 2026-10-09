@@ -1,5 +1,12 @@
 import * as React from "react"
-import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native"
+import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  StyleSheet,
+  View,
+} from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { api } from "@workspace/client"
 import { loginSchema } from "@workspace/client/auth"
@@ -29,6 +36,7 @@ export function LoginScreen() {
   const [errors, setErrors] = React.useState<FieldErrors>({})
   const [formError, setFormError] = React.useState<string | null>(null)
   const [submitting, setSubmitting] = React.useState(false)
+  const abortRef = React.useRef<AbortController | null>(null)
 
   function handleChange(key: keyof FieldErrors, value: string) {
     if (key === "email") setEmail(value)
@@ -51,12 +59,18 @@ export function LoginScreen() {
 
     setErrors({})
     setFormError(null)
+    const controller = new AbortController()
+    abortRef.current = controller
     setSubmitting(true)
     try {
-      const { token, account } = await api.auth.login(parsed.data)
+      const { token, account } = await api.auth.login(parsed.data, {
+        signal: controller.signal,
+      })
       await signIn(token, account)
     } catch (err) {
-      if (err instanceof AppError && err.statusCode === 401) {
+      if (err instanceof Error && err.name === "AbortError") {
+        // Dibatalkan pemakai lewat dialog — senyap.
+      } else if (err instanceof AppError && err.statusCode === 401) {
         setFormError("Email atau password salah")
       } else if (err instanceof Error && err.message) {
         setFormError(err.message)
@@ -64,8 +78,13 @@ export function LoginScreen() {
         setFormError("Login gagal. Coba lagi.")
       }
     } finally {
+      abortRef.current = null
       setSubmitting(false)
     }
+  }
+
+  function handleCancel() {
+    abortRef.current?.abort()
   }
 
   return (
@@ -173,6 +192,32 @@ export function LoginScreen() {
           </Text>
         </View>
       </KeyboardAvoidingView>
+
+      <Modal
+        transparent
+        visible={submitting}
+        animationType="fade"
+        onRequestClose={handleCancel}
+      >
+        <View style={styles.overlay}>
+          <View style={styles.dialog}>
+            <ActivityIndicator size="small" />
+            <Text size="sm" className="font-medium">
+              Signing in…
+            </Text>
+            <Text size="xs" className="text-center text-muted-foreground">
+              Mohon tunggu, sedang menghubungi server
+            </Text>
+            <Button
+              variant="outline"
+              className="h-10 w-full"
+              onPress={handleCancel}
+            >
+              <ButtonText>Cancel</ButtonText>
+            </Button>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   )
 }
@@ -200,5 +245,23 @@ const styles = StyleSheet.create({
   },
   terms: {
     marginTop: 24,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
+  },
+  dialog: {
+    width: "100%",
+    maxWidth: 320,
+    gap: 12,
+    alignItems: "center",
+    padding: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#e3e7e8",
+    backgroundColor: "#ffffff",
   },
 })
