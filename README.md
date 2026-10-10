@@ -1,5 +1,7 @@
 # shadcn/ui monorepo template
 
+opencode -s ses_f0461b878ffeW26oSGhJUMoFIM
+
 This is a Next.js monorepo template with shadcn/ui.
 
 ## Environment
@@ -13,12 +15,12 @@ openssl rand -hex -32   # tempel ke JWT_SECRET
 
 Konsumen membacanya otomatis lewat symlink `.env` per direktori:
 
-| Lokal | Dibaca oleh |
-| --- | --- |
-| `apps/web/.env` | Next.js (auto-load `NEXT_PUBLIC_*`) |
+| Lokal              | Dibaca oleh                            |
+| ------------------ | -------------------------------------- |
+| `apps/web/.env`    | Next.js (auto-load `NEXT_PUBLIC_*`)    |
 | `apps/mobile/.env` | Expo/Metro (auto-load `EXPO_PUBLIC_*`) |
-| `apps/api/.env` | `dotenv` di `src/main.ts` |
-| `packages/db/.env` | `prisma.config.ts` / seed (dotenv) |
+| `apps/api/.env`    | `dotenv` di `src/main.ts`              |
+| `packages/db/.env` | `prisma.config.ts` / seed (dotenv)     |
 
 Validasi terpusat ada di `@workspace/env` (`packages/env`).
 
